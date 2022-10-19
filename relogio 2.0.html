@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        body{
+            background-image: url('1.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            max-width: 100%;
+
+           
+            
+        }
+        .estilo_relogio{
+            font-size: 24px;
+            line-height: 36px;
+            color:black;
+            background-color:rgba(251, 190, 39,0.4);
+            border:0px;
+            position: relative;
+            left: 25%;
+            top: 200px;
+            
+
+            
+          
+            text-align: center;
+            max-width:600px;
+            width: 100%;
+            height: 50px;
+            
+        }
+    </style>
+
+
+    <script>
+        
+
+        function relogio(){
+            
+            var tempo = new Date();
+
+            var hora = tempo.getHours();
+            var minuto = tempo.getMinutes();
+            var segundo = tempo.getSeconds();
+
+            var algaritmo_romanos_horas = ['I','II','III','IV','V','VI','VII','VIII','IX','X','XI','XI'];
+            
+
+            if(hora<10){
+                hora = "0"+hora;
+            }
+            if(minuto<10){
+                minuto = "0"+minuto;
+            }
+            if(segundo<10){
+                segundo = "0"+segundo;
+            }
+
+            var relogio_digital = hora+":"+minuto+":"+segundo;
+
+            document.getElementById("rel").value=relogio_digital;  
+
+        }
+
+        function relogio_romano(){
+            
+            var tempo = new Date();
+
+            var hora = tempo.getHours();
+            var minuto = tempo.getMinutes();
+            var segundo = tempo.getSeconds();
+
+            var algaritmo_romanos_horas = ['XII','I','II','III','IV','V','VI','VII','VIII','IX','X','XI','XII','I','II','III','IV','V','VI','VII','VIII','IX','X','XI',];
+            var algaritmo_romanos_minuto = ['LX','I','II','III','IV','V','VI','VII','VIII','IX','X','XI','XII','XIII','XIV','XV','XVI','XVII','XVIII','XIX','XX','XXI','XXII','XXIII','XXIV','XXV','XXVI','XXVII','XXVIII','XXIX','XXX','XXXI','XXXII','XXXIII','XXXIV','XXXV','XXXVI','XXXVII','XXXVIII','XXXIX','XL','XLI','XLII','XLIII','XLIV','XLV','XLVI','XLVII','XLVII','XLVIII','XLIX','L','LI','LII','LIII','LIV','LV','LVI','LVII','LVIII','LIX'];
+            var algaritmo_romanos_segundo = ['LX','I','II','III','IV','V','VI','VII','VIII','IX','X','XI','XII','XIII','XIV','XV','XVI','XVII','XVIII','XIX','XX','XXI','XXII','XXIII','XXIV','XXV','XXVI','XXVII','XXVIII','XXIX','XXX','XXXI','XXXII','XXXIII','XXXIV','XXXV','XXXVI','XXXVII','XXXVIII','XXXIX','XL','XLI','XLII','XLIII','XLIV','XLV','XLVI','XLVII','XLVII','XLVIII','XLIX','L','LI','LII','LIII','LIV','LV','LVI','LVII','LVIII','LIX'];
+            
+
+       
+                   
+                hora = algaritmo_romanos_horas[hora];
+                   
+                minuto = algaritmo_romanos_minuto[minuto];
+            
+           
+                segundo = algaritmo_romanos_segundo[segundo];
+            
+
+            var roma = hora+":"+minuto+":"+segundo;
+            
+            document.getElementById("relogio_romano").value=roma;  
+            
+
+        }
+
+        function data(){
+            var data = new Date();
+            dia = data.getDate();
+            mes = data.getMonth();
+            var meses = ['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'];
+            var ano = data.getFullYear();
+
+            var data_completa = dia+" de "+meses[mes]+" de "+ano;
+            document.getElementById("data_atual").value = data_completa;
+
+        }
+
+     
+       setInterval(relogio,1000);
+       setInterval(relogio_romano,1000);
+       
+       window.addEventListener("load",relogio);
+       window.addEventListener("load",relogio_romano);
+       window.addEventListener("load",data);
+    </script>
+</head>
+<body>
+
+    <input type="txt" id="rel" class="estilo_relogio">
+    <br><br><br>
+    <input type="txt" id="relogio_romano" class="estilo_relogio">
+    <br><br><br>
+    <input type="txt" id="data_atual" class="estilo_relogio">
+
+</body>
+</html>
